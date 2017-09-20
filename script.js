@@ -2,7 +2,7 @@ function futurama() {
 	var x = document.getElementById("textinputid").value;
 	if (x == "Electric Mucus") {
 		document.getElementById("buttonid").disabled = false;
-	} else {
-		document.getElementById("buttonid").disabled = true;
+	} else if (x == "pink") {
+		document.getElementById("buttonid").style.backgroundColor = "#FFC0CB";
 	}
 }
