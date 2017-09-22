@@ -3,9 +3,10 @@ import ICard from "./../interfaces/ICard";
 export default class Deck {
 	private _cards:ICard[];
 	private _cardRanks:string[] = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
-	private _cardSuits:string[] = ["♡", "♤", "♧", "♢"];
+	private _cardSuits:string[] = ["♡", "♤", "♧", "♢", "TURDS"];
 
-	private _buildCards() {
+    private _buildCards() {
+        // go through available ranks and suits and build a deck from each combination
 		this._cardRanks.forEach(rank => {
 			const newCard = {};
 
@@ -27,7 +28,8 @@ export default class Deck {
 	constructor() {
 		console.log("Deck instantiated.");
 		this._cards = [];
-		this._buildCards();
+        this._buildCards();
+
 	}
 
 	public drawCard() {

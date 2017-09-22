@@ -5,7 +5,7 @@
 		<div class="ui grid">
 			<div class="two column row">
 				<div class="middle aligned column">
-					<button class="ui big fluid button">
+					<button (click)="drawACard()" class="ui big fluid button">
 						Pick a card!
 					</button>
 				</div>
@@ -19,9 +19,11 @@
 		</div>
 	</div>
 
-	<div class="ui left floated compact center aligned segment card-in-hand">
-		<button class="ui large button">
-			<h2>card.rank of card.suit</h2>
+	<div *ngFor="let card of cardsInHand; let I = index" class="ui left floated compact center aligned segment card-in-hand">
+        <!-- card  variable made for individual array item, place in array is stored in index -->
+		<button (click)="returnACard(I, card)" class="ui large button"> 
+            <!-- when button is clicked, it runs the individual card and its position in the array through the function -->
+			<h2>{{card.rank}} of {{card.suit}}</h2>
 			<span class="return">
 				RETURN
 				<i class="reply icon"></i>
