@@ -3,7 +3,7 @@ import ICard from "./../interfaces/ICard";
 export default class Deck {
 	private _cards:ICard[];
 	private _cardRanks:string[] = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
-	private _cardSuits:string[] = ["♡", "♤", "♧", "♢", "TURDS"];
+	private _cardSuits:string[] = ["♡", "♤", "♧", "♢"];
 
     private _buildCards() {
         // go through available ranks and suits and build a deck from each combination
@@ -30,16 +30,20 @@ export default class Deck {
 		this._cards = [];
         this._buildCards();
 
-	}
+    }
 
-	public drawCard() {
-		const randomCardIndex = Math.floor(Math.random() * this._cards.length);   // fancy psuedo-random stuff
-		const card = this._cards[randomCardIndex];                                // fetch myself a reference to the card I'm drawing
-		this._cards.splice(randomCardIndex, 1);                                   // remove it from the array so it won't be fetched again
-		this._consoleCardCount();
+    public drawCard() {
+        const randomCardIndex = Math.floor(Math.random() * this._cards.length);   // fancy psuedo-random stuff
+        const card = this._cards[randomCardIndex];                                // fetch myself a reference to the card I'm drawing
+        this._cards.splice(randomCardIndex, 1);                                   // remove it from the array so it won't be fetched again
+        this._consoleCardCount();
 
-		return card;
-	}
+        return card;
+    }
+
+    public get getCardCount() {
+        return this._cards.length;
+    }
 
 	public returnCardToDeck(card:ICard) {
 		this._cards.push(card);

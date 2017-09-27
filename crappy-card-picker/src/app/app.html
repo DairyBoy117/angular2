@@ -5,15 +5,17 @@
 		<div class="ui grid">
 			<div class="two column row">
 				<div class="middle aligned column">
-					<button (click)="drawACard()" class="ui big fluid button">
+					<button (click)="drawACard()" class="ui big fluid button" [disabled]="getDeckCardCount === 0">
 						Pick a card!
+                        You have {{getDeckCardCount}} cards left.
 					</button>
 				</div>
-				<div class="one wide bottom aligned column">
-					<div class="life-bar"></div>
+				<div class="one wide bottom aligned column lifeBarParent">
+					<div [ngStyle]="lifeBar" class="life-bar">
+                    </div>
 				</div>
 				<div class="four wide middle aligned column">
-						You last drew: n/a
+					    <p *ngIf ="recentCard !== undefined">You last drew: {{recentCard.rank}} of {{recentCard.suit}}</p>	
 				</div>
 			</div>
 		</div>
@@ -23,7 +25,7 @@
         <!-- card  variable made for individual array item, place in array is stored in index -->
 		<button (click)="returnACard(I, card)" class="ui large button"> 
             <!-- when button is clicked, it runs the individual card and its position in the array through the function -->
-			<h2>{{card.rank}} of {{card.suit}}</h2>
+			<h2 class="redCard">{{card.rank}} of {{card.suit}}</h2>
 			<span class="return">
 				RETURN
 				<i class="reply icon"></i>
