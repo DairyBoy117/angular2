@@ -5,4 +5,6 @@
     templateUrl: './whatever.html'
     //styleUrls: ['./.css']
 })
-export class WhateverComponent { }
+export class WhateverComponent {
+
+}

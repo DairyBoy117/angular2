@@ -17,11 +17,11 @@ export class NavComponent {
         this.navItems = [
             {
                 Name: 'Room 1',
-                URL: '#room1'
+                URL: 'whatever'
             },
             {
                 Name: 'Room 2',
-                URL: '#room2'
+                URL: 'room2'
             }
         ];
     }
