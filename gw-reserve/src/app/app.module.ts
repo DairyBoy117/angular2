@@ -2,12 +2,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 //Gets angular stuff
 
-import { AppRouting } from './app.routing.module';
+import { AppRouting, routedComponents } from './app.routing.module';
 import { AppComponent } from './app.component';
-import { WhateverComponent } from './whatever/whatever.component';
 import { NavComponent } from './navigation/nav.component';
-//import { C1Component } from './c1/c1.component';
-//import { C2Component } from './c2/c2.component';
 //imports the components to be used
 
 @NgModule({ //creates the module based on the imported components
@@ -17,13 +14,11 @@ import { NavComponent } from './navigation/nav.component';
     ],
     declarations: [
         AppComponent,
-        WhateverComponent,
-        NavComponent
+        NavComponent,
+        routedComponents //gets components routed in the AppRouting module
     ],
     bootstrap: [
-        AppComponent,
-        WhateverComponent,
-        NavComponent
+        AppComponent
     ]
 })
 export class AppModule { } //makes the appmodule to be imported

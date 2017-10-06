@@ -1,38 +1,35 @@
 ﻿import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AppComponent } from './app.component';
 import { WhateverComponent } from './whatever/whatever.component';
-import { NavComponent } from './navigation/nav.component';
-//import { C1Component } from './c1/c1.component';
-//import { C2Component } from './c2/c2.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { RoomComponent } from './room/room.component';
 //imports the components to be used
 
 const routes: Routes = [ //defines every single url on the sites and where it goes
-    /*{
-        path: "c1", //localhost/c1
-        component: C1Component
+    {
+        path: "",//localhost/
+        component: WelcomeComponent,
+        pathMatch: "full"
     },
     {
-        path: "c2",//localhost/c2
-        component: C2Component
-    },*/
-    {
-        path: "app",//localhost/app
-        component: AppComponent
+        path: "room/:id",//localhost/whatever
+        component: RoomComponent,
+        pathMatch: "full"
     },
     {
         path: "whatever",//localhost/whatever
         component: WhateverComponent
     },
-    {
+    /*{
         path: "",//localhost/
-        redirectTo: "app",
+        redirectTo: "whatever",
         pathMatch: "full"
-    },
+    },*/
     {
         path: "**", //catch all
-        component: AppComponent
+        redirectTo: "",
+        pathMatch: "full"
     }
 ]
 @NgModule({
@@ -40,7 +37,10 @@ const routes: Routes = [ //defines every single url on the sites and where it go
         RouterModule.forRoot(routes) //gets the route urls
     ],
     exports: [
-        RouterModule
+        RouterModule //exports functions necessary to use this module elsewhere
     ]
 })
 export class AppRouting { }
+
+export const routedComponents = [WelcomeComponent, RoomComponent, WhateverComponent]; //allows export of all components here
+//won't have to write again wherever this is called AppRouting is imported

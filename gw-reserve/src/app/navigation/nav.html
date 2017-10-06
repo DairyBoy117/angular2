@@ -1,9 +1,5 @@
 ﻿<ul>
-    <li [routerLink]="item.URL" *ngFor="let item of navItems">
+    <li [routerLink]="item.URL" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" *ngFor="let item of navItems">
         <a>{{item.Name}}</a> 
     </li>
 </ul>
-<br />
-<hr />
-<router-outlet></router-outlet>
-<hr />

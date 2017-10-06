@@ -6,7 +6,7 @@ interface NavItem {
 };
 
 @Component({
-    selector: 'nav-app',
+    selector: 'navigation',
     templateUrl: './nav.html',
     styleUrls: ['./nav.css']
 })
@@ -16,12 +16,20 @@ export class NavComponent {
     constructor() {
         this.navItems = [
             {
-                Name: 'Room 1',
-                URL: 'whatever'
+                Name: 'Home',
+                URL: ''
             },
             {
-                Name: 'Room 2',
-                URL: 'room2'
+                Name: 'Halo',
+                URL: 'room/halo'
+            },
+            {
+                Name: 'Donkey Kong',
+                URL: 'room/donkey-kong'
+            },
+            {
+                Name: 'Whatever',
+                URL: 'whatever'
             }
         ];
     }
