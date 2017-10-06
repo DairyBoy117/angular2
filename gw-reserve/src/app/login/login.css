@@ -1,0 +1,19 @@
+﻿div {
+    float: right;
+    margin: 5px 10px 0;
+}
+
+button {
+    border: none;
+    color: white;
+    padding: 10px;
+    font-size: 15px;
+}
+
+button.in {
+    background: green;
+}
+
+button.out {
+    background: red;
+}

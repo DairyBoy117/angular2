@@ -1,0 +1,14 @@
+﻿<div>
+    
+    <select [(ngModel)]="userChoice">
+        <option>Github</option>
+        <option>Google</option>
+    </select>
+    <button [disabled]="username" (click)="logIn()" class="in">
+        Login
+    </button>
+    <button [disabled]="!username" (click)="logOut()" class="out">
+        Logout
+    </button>
+    {{username | json}}
+</div>
