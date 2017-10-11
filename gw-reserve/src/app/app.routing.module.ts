@@ -6,6 +6,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { RoomComponent } from './room/room.component';
 //imports the components to be used
 
+import { LogInRouterGuard} from './services/router-guard';
+
 const routes: Routes = [ //defines every single url on the sites and where it goes
     {
         path: "",//localhost/
@@ -15,6 +17,7 @@ const routes: Routes = [ //defines every single url on the sites and where it go
     {
         path: "room/:id",//localhost/whatever
         component: RoomComponent,
+        canActivate: [LogInRouterGuard], //runs the canActivate from router-guard to see if user is logged in first
         pathMatch: "full"
     },
     {
@@ -38,6 +41,9 @@ const routes: Routes = [ //defines every single url on the sites and where it go
     ],
     exports: [
         RouterModule //exports functions necessary to use this module elsewhere
+    ],
+    providers: [
+        LogInRouterGuard 
     ]
 })
 export class AppRouting { }

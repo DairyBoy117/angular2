@@ -3,6 +3,10 @@
     margin: 5px 10px 0;
 }
 
+.welcome {
+    float: left;
+}
+
 button {
     border: none;
     color: white;
