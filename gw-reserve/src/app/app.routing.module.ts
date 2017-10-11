@@ -4,7 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { WhateverComponent } from './whatever/whatever.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { RoomComponent } from './room/room.component';
-import { LogInRouterGuard} from './services/router-guard';
+import { LogInRouterGuard } from './services/router-guard';
+import { CanDeactivateService, ICanDeactivate } from './services/can-deactivate-guard';
 //imports the components to be used
 
 const routes: Routes = [ //defines every single url on the sites and where it goes
@@ -17,6 +18,7 @@ const routes: Routes = [ //defines every single url on the sites and where it go
         path: "room/:id",//localhost/whatever
         component: RoomComponent,
         canActivate: [LogInRouterGuard], //runs the canActivate from router-guard to see if user is logged in first
+        canDeactivate: [CanDeactivateService],
         pathMatch: "full"
     },
     {
@@ -42,7 +44,8 @@ const routes: Routes = [ //defines every single url on the sites and where it go
         RouterModule //exports functions necessary to use this module elsewhere
     ],
     providers: [
-        LogInRouterGuard //tells angular it has access to route guard service
+        LogInRouterGuard, //tells angular it has access to route guard service
+        CanDeactivateService
     ]
 })
 export class AppRouting { }
