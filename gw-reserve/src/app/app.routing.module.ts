@@ -4,9 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { WhateverComponent } from './whatever/whatever.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { RoomComponent } from './room/room.component';
-//imports the components to be used
-
 import { LogInRouterGuard} from './services/router-guard';
+//imports the components to be used
 
 const routes: Routes = [ //defines every single url on the sites and where it goes
     {
@@ -43,7 +42,7 @@ const routes: Routes = [ //defines every single url on the sites and where it go
         RouterModule //exports functions necessary to use this module elsewhere
     ],
     providers: [
-        LogInRouterGuard 
+        LogInRouterGuard //tells angular it has access to route guard service
     ]
 })
 export class AppRouting { }
