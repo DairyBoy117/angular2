@@ -1,5 +1,7 @@
 ﻿<div>
-    
+    <div *ngIf="username" class="welcome">
+        <div>Welcome, {{username.name}}</div>
+    </div>
     <select [(ngModel)]="userChoice">
         <option>Github</option>
         <option>Google</option>
@@ -10,5 +12,4 @@
     <button [disabled]="!username" (click)="logOut()" class="out">
         Logout
     </button>
-    {{username | json}}
 </div>
