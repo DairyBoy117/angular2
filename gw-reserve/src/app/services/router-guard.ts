@@ -11,7 +11,7 @@ export class LogInRouterGuard implements CanActivate {
         if (this.login.getLoggedInUser()) { //checks if a user is logged in
             return true;
         } else {
-            this.router.navigateByUrl('welcome');
+            this.router.navigate(['welcome'], { fragment: 'show-warning'} );
             return false;
         }; 
 

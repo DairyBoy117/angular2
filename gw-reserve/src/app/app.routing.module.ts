@@ -10,7 +10,7 @@ import { CanDeactivateService, ICanDeactivate } from './services/can-deactivate-
 
 const routes: Routes = [ //defines every single url on the sites and where it goes
     {
-        path: "",//localhost/
+        path: "welcome",//localhost/
         component: WelcomeComponent,
         pathMatch: "full"
     },
@@ -32,7 +32,7 @@ const routes: Routes = [ //defines every single url on the sites and where it go
     },*/
     {
         path: "**", //catch all
-        redirectTo: "",
+        redirectTo: "welcome",
         pathMatch: "full"
     }
 ]

@@ -16,13 +16,14 @@ export class LoginComponent implements OnInit {
 
     public logIn() {
         this.logInService.logIn();
+        window.location.hash = "";
     }
 
     public logOut() {
         this.logInService.logOut();
         console.log(this.router.url);
         if (this.router.url.includes('/room')) {
-            this.router.navigateByUrl('welcome');
+            this.router.navigateByUrl('/welcome');
         }
     }
 

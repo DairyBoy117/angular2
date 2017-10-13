@@ -1,0 +1,15 @@
+<div>
+    <form #myForm="ngForm" (ngSubmit)="submitForm(myForm)" novalidate>
+        <div>
+            <input type="text" name="myTextInput" 
+            [ngClass]="{error: myForm.controls?.myTextInput?.errors}" 
+            ngModel required> 
+        </div>
+        <div>
+            <input type="email" name="myEmailInput" 
+            [ngClass]="{error: myForm.controls?.myEmailInput?.errors}" 
+            ngModel required email>
+        </div>
+        <button type="submit" [disabled]="myForm.invalid">Submit</button>
+    </form>
+</div>
