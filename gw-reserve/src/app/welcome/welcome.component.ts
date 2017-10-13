@@ -1,4 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
@@ -7,18 +8,19 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
     styleUrls: ['./welcome.css']
 })
 export class WelcomeComponent implements OnInit {
-    public id;
+    public isShowingLoginWarning;
 
     constructor(
         private activeRoute: ActivatedRoute
     ) { }
 
     ngOnInit() {
-        console.log("Component Init");
-
-        this.activeRoute.params.subscribe(parameters => {
-            console.log("params", parameters["id"]);
-            this.id = parameters["id"];
+        this.activeRoute.fragment.subscribe(data => {
+            this.isShowingLoginWarning = data;
         });
+    }
+
+    closeWarnings(){
+        this.isShowingLoginWarning = false;
     }
 }
