@@ -8,7 +8,7 @@ import { ICanDeactivate } from './../services/can-deactivate-guard';
     styleUrls: ['./room.css']
 })
 export class RoomComponent implements ICanDeactivate, OnInit {
-    public id;
+    public roomId:string;
     public canThisDeactivate: boolean;
 
     constructor(private activeRoute: ActivatedRoute) {
@@ -26,9 +26,13 @@ export class RoomComponent implements ICanDeactivate, OnInit {
     ngOnInit() {
         console.log("Component Init");
 
-        this.activeRoute.params.subscribe(parameters => {
+        this.activeRoute.paramMap.subscribe(route => {
+            this.roomId = route.get('id');
+        });
+
+        /*this.activeRoute.params.subscribe(parameters => {
             console.log("params", parameters["id"]);
             this.id = parameters["id"];
-        });
+        });*/
     }
 }

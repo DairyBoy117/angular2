@@ -11,6 +11,7 @@ import { RoomFormComponent } from './room/room-form/room-form.component';
 //imports the components to be used
 
 import { LogInService } from './services/login.services';
+import { RoomService } from './services/room.service';
 
 @NgModule({ //creates the module based on the imported components
     imports: [
@@ -26,7 +27,8 @@ import { LogInService } from './services/login.services';
         routedComponents //gets components routed in the AppRouting module
     ],
     providers: [
-        LogInService
+        LogInService,
+        RoomService
     ],
     bootstrap: [
         AppComponent
