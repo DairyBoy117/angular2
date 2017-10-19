@@ -1,8 +1,5 @@
 ﻿<div>
-    <h2>This is a room page</h2>
+    <h2>{{ roomId }}</h2>
     <button (click)="toggleCanDeactivate()">Can you leave? {{ canThisDeactivate }}</button>
-    <p>
-        {{id}}
-    </p>
-    <gw-room-form></gw-room-form>
+    <gw-room-form [roomId]="roomId"></gw-room-form>
 </div>
