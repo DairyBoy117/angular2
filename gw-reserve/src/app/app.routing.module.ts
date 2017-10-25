@@ -15,13 +15,6 @@ const routes: Routes = [ //defines every single url on the sites and where it go
         pathMatch: "full"
     },
     {
-        path: "room/:id",//localhost/whatever
-        component: RoomComponent,
-        canActivate: [LogInRouterGuard], //runs the canActivate from router-guard to see if user is logged in first
-        canDeactivate: [CanDeactivateService],
-        pathMatch: "full"
-    },
-    {
         path: "whatever",//localhost/whatever
         component: WhateverComponent
     },
@@ -30,11 +23,11 @@ const routes: Routes = [ //defines every single url on the sites and where it go
         redirectTo: "whatever",
         pathMatch: "full"
     },*/
-    {
-        path: "**", //catch all
-        redirectTo: "welcome",
-        pathMatch: "full"
-    }
+    // {
+    //     path: "**", //catch all
+    //     redirectTo: "welcome",
+    //     pathMatch: "full"
+    // }
 ]
 @NgModule({
     imports: [
@@ -50,5 +43,5 @@ const routes: Routes = [ //defines every single url on the sites and where it go
 })
 export class AppRouting { }
 
-export const routedComponents = [WelcomeComponent, RoomComponent, WhateverComponent]; //allows export of all components here
+export const routedComponents = [WelcomeComponent, WhateverComponent]; //allows export of all components here
 //won't have to write again wherever this is called AppRouting is imported

@@ -1,39 +1,76 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { IReservation } from './../../interfaces/IReservation';
-import { RoomService } from './../../services/room.service';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+
+import { NgForm } from "@angular/forms";
+
+import { ICanDeactivate } from "./../../services/can-deactivate-guard";
 
 @Component({
-    selector: 'gw-room-form',
-    templateUrl: './room-form.component.html',
-    styleUrls: ['./room-form.component.css']
+	selector: "gw-room-form",
+	templateUrl: "./room-form.component.html",
+	styleUrls: ["./room-form.component.css"]
 })
+export class RoomFormComponent implements OnInit, ICanDeactivate {
+	public roomId:string;
+	public reasons: string[];
 
-export class RoomFormComponent implements OnInit {
+	@ViewChild("roomForm")
+	private _form:NgForm;
 
-    constructor(private _roomService:RoomService){}
+	public defaultStartTimeString:string;
+	public defaultEndTimeString:string;
 
-    @Input()
-    public roomId:string;
+	constructor(private _activatedRoute:ActivatedRoute) { }
 
-    public options:string[];
+	public ngOnInit() {
+		this.reasons = [
+			"Séance",
+			"Scrum meeting",
+			"Scrum beating",
+			"Performance review",
+			"Client meetup",
+			"Interview"
+		];
 
-    ngOnInit(){
-        this.options = [
-            "Client Meeting",
-            "Job Interview",
-            "SCRUM Meeting",
-            "SCRUM Beating"
-        ];
-    }
+		this._activatedRoute.parent.paramMap.subscribe(param => {
+			this._switchRoom(param.get("id"));
+		});
 
-    submitForm(formValues) {
-        const reservation:IReservation = {
-            email: formValues.myEmailInput,
-            reason: formValues.reserveReason,
-            endDateTime: formValues.endDateTime,
-            startDateTime: formValues.startDateTime
-        }
-        console.log(reservation);
-        //this._roomService.addReservation(roomId, reservation);
-    }
+		this.defaultStartTimeString = this._getDefaultStartDate().toTimeString().split(" ")[0];
+		this.defaultEndTimeString = this._getDefaultEndDate().toTimeString().split(" ")[0];
+	}
+	
+	private _switchRoom(id:string) {
+		this.roomId = id;
+	}
+
+	public canDeactivate() {
+		if (this._form.pristine || this._form.submitted) return true;
+
+		return confirm("You appear to have unsaved changes.  Discard and continue?");
+	}
+
+	public onSubmit(reservationValues) {
+		const message = "Room reservation submitted!";
+		console.log(message, reservationValues);
+		alert(message);
+	}
+
+	private _getDefaultStartDate() {
+		const date = new Date();
+
+		date.setHours(date.getHours() + 1);
+		date.setMinutes(0);
+		date.setSeconds(0);
+
+		return date;
+	}
+
+	private _getDefaultEndDate() {
+		const date = this._getDefaultStartDate();
+
+		date.setHours(date.getHours() + 1);
+
+		return date;
+	}
 }

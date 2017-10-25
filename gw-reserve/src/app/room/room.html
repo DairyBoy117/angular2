@@ -1,5 +1,17 @@
-﻿<div>
-    <h2>{{ roomId }}</h2>
-    <button (click)="toggleCanDeactivate()">Can you leave? {{ canThisDeactivate }}</button>
-    <gw-room-form [roomId]="roomId"></gw-room-form>
+﻿<div class="ui room container">
+	<div class="ui inverted active dimmer" *ngIf="nothing">
+		<div class="ui big loader"></div>
+	</div>
+	<div class="ui padded grid">
+		<div class="row">
+			<div class="six wide computer only column">
+				Room ID: {{ roomId }}
+			</div>
+			<div class="sixteen wide tablet ten wide computer column">
+				<div class="room-content">
+					<router-outlet></router-outlet>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

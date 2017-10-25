@@ -3,17 +3,25 @@ import {CanActivate, Router} from '@angular/router';
 import {LogInService} from './login.services';
 
 @Injectable()
-
 export class LogInRouterGuard implements CanActivate {
-    constructor(private login: LogInService, private router: Router) { }
+	private _isUserLoggedIn: boolean;
 
-    canActivate() { //meant to return a boolean, if something calls this function, it will not allow that thing to continue if it gets a false
-        if (this.login.getLoggedInUser()) { //checks if a user is logged in
-            return true;
-        } else {
-            this.router.navigate(['welcome'], { fragment: 'show-warning'} );
-            return false;
-        }; 
+	constructor(
+		private _loginService: LogInService,
+		private _router: Router
+	) { }
 
-    }
+	canActivate() {
+		return this._loginService.getLoggedInUser().map(
+			loggedInUser => {
+				if (loggedInUser) return true;
+
+				this._router.navigate(["welcome"], {
+					fragment: "login-needed"
+				});
+
+				return false;
+			}
+		);
+	}
 }

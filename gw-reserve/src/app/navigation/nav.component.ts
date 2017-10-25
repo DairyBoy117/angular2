@@ -21,11 +21,11 @@ export class NavComponent {
             },
             {
                 Name: 'Halo',
-                URL: 'room/halo'
+                URL: 'rooms/halo'
             },
             {
                 Name: 'Donkey Kong',
-                URL: 'room/donkey-kong'
+                URL: 'rooms/donkey-kong'
             },
             {
                 Name: 'Whatever',
